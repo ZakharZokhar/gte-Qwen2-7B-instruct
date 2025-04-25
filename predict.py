@@ -22,9 +22,15 @@ class Predictor(BasePredictor):
         query: str = Input(description="The query to encode."),
         task_description: str = Input(description="Instruction or task context", default="Given a web search query, retrieve relevant passages that answer the query")
     ) -> list:
-        prompt = f"Instruct: {task_description}\nQuery: {query}"
-        batch = self.tokenizer([prompt], return_tensors="pt", padding=True, truncation=True, max_length=8192)
-        outputs = self.model(**batch)
-        embeddings = self.last_token_pool(outputs.last_hidden_state, batch["attention_mask"])
-        embeddings = F.normalize(embeddings, p=2, dim=1)
-        return embeddings[0].tolist()
+        print('here')
+        return {
+            "log": "predict start",
+            "query": query,
+            "task": task_description
+        }
+        # prompt = f"Instruct: {task_description}\nQuery: {query}"
+        # batch = self.tokenizer([prompt], return_tensors="pt", padding=True, truncation=True, max_length=8192)
+        # outputs = self.model(**batch)
+        # embeddings = self.last_token_pool(outputs.last_hidden_state, batch["attention_mask"])
+        # embeddings = F.normalize(embeddings, p=2, dim=1)
+        # return embeddings[0].tolist()
