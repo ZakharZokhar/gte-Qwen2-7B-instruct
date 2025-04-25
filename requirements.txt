@@ -1,0 +1,5 @@
+packaging>=25.0
+transformers>=4.39.2
+torch
+flash-attn>=2.5.6
+accelerate
