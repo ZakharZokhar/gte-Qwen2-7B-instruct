@@ -6,7 +6,5 @@ build:
     - pip install packaging
     - pip install --no-build-isolation flash-attn==2.7.4.post1
     - pip install -r requirements.txt
-  files:
-    - requirements.txt
 
 predict: "predict.py:Predictor"
