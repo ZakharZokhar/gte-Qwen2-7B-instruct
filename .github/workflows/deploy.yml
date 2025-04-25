@@ -18,6 +18,12 @@ jobs:
         with:
           token: ${{ secrets.REPLICATE_API_TOKEN }}
 
+      - name: show files
+        run: |
+          pwd
+          ls -l
+          cat requirements.txt || echo "requirements.txt NOT FOUND"
+
       - name: Push to Replicate
         run: |
           cog push r8.im/sabbah13/gte-qwen2-7b-instruct
