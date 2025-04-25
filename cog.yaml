@@ -1,8 +1,10 @@
 build:
   gpu: true
   python_version: "3.10"
+  system_packages:
+    - python3-pip
+    - python3-packaging
   python_packages:
-    - packaging>=20.0
     - transformers>=4.39.2
     - torch
     - flash-attn>=2.5.6
