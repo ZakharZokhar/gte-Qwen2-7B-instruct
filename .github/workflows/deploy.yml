@@ -8,7 +8,6 @@ on:
 jobs:
   push:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,16 +17,13 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install Cog
+      - name: Install pipx & cog
         run: |
-          pip install --user cog
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          python -m pip install --upgrade pip
+          python -m pip install pipx
+          pipx install cog
 
-      - name: Add ~/.local/bin to PATH
-        run: |
-          echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
-
-      - name: Verify cog is installed
+      - name: Verify cog path
         run: which cog
 
       - name: Push model to Replicate
