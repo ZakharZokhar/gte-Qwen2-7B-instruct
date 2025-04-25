@@ -17,11 +17,9 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Download cog CLI binary
+      - name: Install cog globally
         run: |
-          curl -L https://github.com/replicate/cog/releases/download/v0.8.4/cog-linux -o cog
-          chmod +x cog
-          sudo mv cog /usr/local/bin/cog
+          pip install cog
 
       - name: Check cog version
         run: cog --version
